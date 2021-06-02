@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Basic AJAX Demo</title>
+		<link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="main">
+			<h2>Get The Latest Content:</h2>
+			<div class='content' id="content">
+				<input type="button" class="button" value="Get Content" id="btn_content" onclick="getContent();"/>  <!-- Clicking button will change content-->
+			</div>
+        <div id ="demo">
+            <h3> Click this buttton for the newest content</h3>
+                <button type="button" onclick="loadDoc()">Change content here!</button> <!-- Clicking button changes content-->
+        </div>
+		<script type="text/javascript">
+			
+            // STEP 1: Setup the xml http request object
+            var ajax = new XMLHttpRequest();         //create the variable as "ajax"
+            // STEP 2: prepare the open ajax request
+            ajax.open('GET', 'content.html');
+            // STEP 3: define the ajax response callback method
+            ajax.onreadystatechange = function() { 
+                if (ajax.readyState = 4) { ///// set readyState to 4 for readyState
+                    document.getElementById('content').innerHTML = ajax.responseText;
+                }
+            }
+            //STEP 4: send the ajax request for data
+            function getContent() {
+                ajax.send();
+                document.getElementById('btn_content').style.display = 'none';
+            }
+
+            function loadDoc() { ///another function for showing content change
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState ==4 && this.status == 200) {  //setting the readyState to 4 and status 200 
+                        document.getElementById("demo").innerHTML = 
+                        this.responseText;
+                    }
+                };
+                xhttp.open("GET", 'content.html', true);
+                xhttp.send();
+            }
+		</script>
+    </body>
+</html>
