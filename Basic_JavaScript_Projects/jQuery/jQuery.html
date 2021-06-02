@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script> <!--sourcing files/code directly from jQuery library-->
+<head>
+<body>
+<script>
+$(document).ready(function() {
+    $("html").append(
+        "<body>\
+            <div id='container'>\
+                <div id='inner'>\
+                    <h1>Basic jQuery</h1>\
+                    <p id='1'>Paragraph 1</p>\
+                    <p id='2'>Paragraph 2</p>\
+                    <p id='3'>Paragraph 3</p>\
+                    <p id='4'>Paragraph 4</p>\
+                </div>\
+            </div>\
+        </body>"
+    );
+    $("#2").css({"color":"red"}); 
+    $("#3").click(function(){ //clicking on Paragraph 3 will hide <h1>
+        $('h1').hide();
+    $("#4").hover(function(){   //hover over paragraph 4 to remove Paragraph 4 
+        $('#4').hide();
+    $("#1").css({"color":"blue"}); // hovering over paragraph 4 will also change Paragraph 1 to blue
+
+         });
+    });  
+});
+
+
+</script>
+
+</html>
